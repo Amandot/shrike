@@ -109,7 +109,7 @@ test("api client: unreachable, untrusted TLS, binary and a huge answer end in a 
     await sheet.getByText("No matches").waitFor({ timeout: 5000 });
 
     await findInput.fill("");
-    assert.equal(await count.count(), 0);
+    await count.waitFor({ state: "detached", timeout: 5000 });
 
     await sheet.getByRole("tab", { name: "Pretty" }).click();
     await sheet.getByRole("textbox", { name: "Find in the response" }).waitFor({ timeout: 5000 });
